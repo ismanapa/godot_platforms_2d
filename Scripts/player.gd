@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal died
+
 var gravity : int = 1000
 var max_speed : int = 100
 var max_jump_speed : int = 360
 var horizontal_acceleration: int = 1200
+var camera: PlayerCamera = null
 
 @onready var anim = $AnimatedSprite2D
+
+func _ready() -> void:
+	camera = get_tree().get_first_node_in_group("Camera")
 
 func _process(delta: float) -> void:
 	var input_action = get_input_actions()
@@ -53,4 +61,8 @@ func player_animations():
 func flip_player(move):
 	if move.x != 0:
 		anim.flip_h = move.x > 0
-	
+
+func _on_trap_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Danger"):
+		died.emit()
+		camera.is_player = false

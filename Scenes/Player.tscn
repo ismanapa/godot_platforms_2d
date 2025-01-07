@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwsrt8y7ym1cl"]
+[gd_scene load_steps=8 format=3 uid="uid://bwsrt8y7ym1cl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_0wi6p"]
 [ext_resource type="Texture2D" uid="uid://cymgb61p1abok" path="res://Assets/Player/tile_0000.png" id="1_57uvt"]
@@ -40,6 +40,9 @@ radius = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amm3t"]
 size = Vector2(14, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3b3l"]
+size = Vector2(12, 10)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_0wi6p")
 
@@ -51,6 +54,7 @@ autoplay = "idle"
 [node name="PickupArea" type="Area2D" parent="." groups=["Player"]]
 position = Vector2(0, 0.5)
 collision_layer = 128
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" groups=["Player"]]
 shape = SubResource("CircleShape2D_5gm1o")
@@ -58,3 +62,13 @@ shape = SubResource("CircleShape2D_5gm1o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_amm3t")
+
+[node name="TrapArea" type="Area2D" parent="." groups=["Player"]]
+position = Vector2(0, 1)
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapArea" groups=["Player"]]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_b3b3l")
+
+[connection signal="area_entered" from="TrapArea" to="." method="_on_trap_area_area_entered"]

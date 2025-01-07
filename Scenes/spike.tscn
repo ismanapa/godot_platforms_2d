@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://mdkqp768qvb7"]
+
+[ext_resource type="Texture2D" uid="uid://cabfltf8i0ly6" path="res://Assets/Traps/tile_0068.png" id="1_5yanp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytdsv"]
+size = Vector2(15, 6)
+
+[node name="Spike" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5yanp")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Danger"]]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_ytdsv")
