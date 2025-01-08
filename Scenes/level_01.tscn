@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bl7dwi2i8yjp1"]
+[gd_scene load_steps=11 format=4 uid="uid://bl7dwi2i8yjp1"]
 
 [ext_resource type="Script" path="res://Scripts/level_01.gd" id="1_1wapo"]
 [ext_resource type="Texture2D" uid="uid://blpwaagst3psu" path="res://Assets/Tiles/tilemap_packed.png" id="1_jgnyd"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://roxuaobtbtcc" path="res://Scenes/camera_2d.tscn" id="3_8u51s"]
 [ext_resource type="PackedScene" uid="uid://dh28wepib6kbf" path="res://Scenes/coin.tscn" id="4_6be6v"]
 [ext_resource type="PackedScene" uid="uid://mdkqp768qvb7" path="res://Scenes/spike.tscn" id="6_bu558"]
+[ext_resource type="PackedScene" uid="uid://c7phuu3tl6tne" path="res://Scenes/Enemy.tscn" id="7_uyqxe"]
+[ext_resource type="PackedScene" uid="uid://b5ub7i8dnk7hl" path="res://Scenes/enemy_goal.tscn" id="8_4hdwn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u844"]
 texture = ExtResource("1_jgnyd")
@@ -248,17 +250,27 @@ tile_map_data = PackedByteArray("AAAAAAIAAAACAAEAAAABAAIAAAACAAEAAAACAAIAAAACAAE
 tile_set = SubResource("TileSet_a36dk")
 
 [node name="Player" parent="." instance=ExtResource("2_2gb8o")]
-position = Vector2(67, -1)
+position = Vector2(-71, 20)
 
 [node name="Camera2D" parent="." instance=ExtResource("3_8u51s")]
 
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_6be6v")]
-position = Vector2(115, 21)
+position = Vector2(159, -34)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_6be6v")]
 position = Vector2(219, 21)
 
 [node name="Spike" parent="." instance=ExtResource("6_bu558")]
 position = Vector2(9, 28)
+
+[node name="Enemy" parent="." instance=ExtResource("7_uyqxe")]
+position = Vector2(47, 26)
+start_direction = 1
+
+[node name="EnemyGoal2" parent="." instance=ExtResource("8_4hdwn")]
+position = Vector2(26, 29)
+
+[node name="EnemyGoal" parent="." instance=ExtResource("8_4hdwn")]
+position = Vector2(127, 30)
