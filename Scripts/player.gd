@@ -4,18 +4,65 @@ class_name Player
 
 signal died
 
+enum State { NORMAL, DASHING }
+var current_state: State = State.NORMAL
+
 var gravity : int = 1000
+
 var max_speed : int = 100
 var max_jump_speed : int = 360
 var horizontal_acceleration: int = 1200
+
+var max_dash_speed : int = 400
+var min_dash_speed : int = 100
+var is_state_new : bool = true
+
 var camera: PlayerCamera = null
 
 @onready var anim = $AnimatedSprite2D
+@onready var dash_area = $DashArea/CollisionShape2D
 
 func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera")
 
 func _process(delta: float) -> void:
+	match current_state:
+		State.NORMAL:
+			player_movement(delta)
+		State.DASHING:
+			dash(delta)
+	
+	is_state_new = false
+	
+func dash(delta: float):
+	if is_state_new:
+		var movement = get_input_actions()
+		
+		dash_area.disabled = false
+		anim.play("jump")
+		
+		var dash_directions = 1
+		
+		if movement.x != 0:
+			dash_directions = sign(movement.x)
+		else:
+			dash_directions = 1 if anim.flip_h else -1
+		
+		
+		velocity = Vector2(max_dash_speed * dash_directions, 0)
+		
+	move_and_slide()
+
+	velocity.x = lerp(0.0, velocity.x, pow(2, -5 * delta))
+	
+	if abs(velocity.x) < min_dash_speed:
+		call_deferred("change_state", State.NORMAL)
+	
+func change_state(new_state: State):
+	current_state = new_state
+	is_state_new = true
+
+func player_movement(delta:float): 
 	var input_action = get_input_actions()
 	
 	if input_action.y < 0 and is_on_floor():
@@ -29,11 +76,16 @@ func _process(delta: float) -> void:
 		
 	velocity.x = clamp(velocity.x, -max_speed, max_speed )
 	
+	if Input.is_action_just_pressed("dash"):
+		call_deferred("change_state", State.DASHING)
+	
+	if is_state_new:
+		dash_area.disabled = true
+		
 	velocity.y += gravity * delta
 	
 	move_and_slide()
 	player_animations()
-
 
 func get_input_actions(): 
 	var move_vector = Vector2.ZERO
