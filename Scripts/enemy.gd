@@ -28,9 +28,9 @@ func flip_enemy():
 	anim.flip_h = direction.x > 0
 
 
-func _on_goal_detector_area_entered(area: Area2D) -> void:
+func _on_goal_detector_area_entered(_area: Area2D) -> void:
 	direction *= -1
 
 
-func _on_hit_box_area_area_entered(area: Area2D) -> void:
+func _on_hit_box_area_area_entered(_area: Area2D) -> void:
 	queue_free()

@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://djhtd3ytfocq"]
+
+[ext_resource type="FontFile" uid="uid://cldla2dqk7q5g" path="res://Resources/BitPotion.ttf" id="1_uwmss"]
+[ext_resource type="Texture2D" uid="uid://ygrjtfm64goy" path="res://Assets/UI/tile_0029.png" id="2_hjbs8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfw82"]
+texture = ExtResource("2_hjbs8")
+texture_margin_left = 10.0
+texture_margin_top = 2.0
+texture_margin_right = 10.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yrh3"]
+atlas = ExtResource("2_hjbs8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xssu2"]
+texture = SubResource("AtlasTexture_5yrh3")
+texture_margin_left = 10.0
+texture_margin_top = 2.0
+texture_margin_right = 10.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uc8pr"]
+load_path = "res://.godot/imported/tile_0029.png-ebe32591ab1cf5507a68583faef600f3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwaqf"]
+atlas = SubResource("CompressedTexture2D_uc8pr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kv4f8"]
+texture = SubResource("AtlasTexture_nwaqf")
+texture_margin_left = 10.0
+texture_margin_top = 2.0
+texture_margin_right = 10.0
+texture_margin_bottom = 3.0
+
+[resource]
+Button/colors/font_color = Color(0.435294, 0.243137, 0.262745, 1)
+Button/colors/font_hover_color = Color(0.435294, 0.243137, 0.262745, 1)
+Button/fonts/font = ExtResource("1_uwmss")
+Button/styles/hover = SubResource("StyleBoxTexture_rfw82")
+Button/styles/normal = SubResource("StyleBoxTexture_xssu2")
+Button/styles/pressed = SubResource("StyleBoxTexture_kv4f8")
+Label/fonts/font = ExtResource("1_uwmss")

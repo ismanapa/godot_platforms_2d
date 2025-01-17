@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwsrt8y7ym1cl"]
+[gd_scene load_steps=15 format=3 uid="uid://bwsrt8y7ym1cl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_0wi6p"]
 [ext_resource type="Texture2D" uid="uid://cymgb61p1abok" path="res://Assets/Player/tile_0000.png" id="1_57uvt"]
 [ext_resource type="Texture2D" uid="uid://do4xvjjjjb4hy" path="res://Assets/Player/tile_0001.png" id="2_6ma80"]
+[ext_resource type="PackedScene" uid="uid://c6vvecchebwxf" path="res://Scenes/AudioStream.tscn" id="2_c863a"]
+[ext_resource type="AudioStream" uid="uid://c2mqj5nbyyrfj" path="res://Assets/Sounds/footstep_grass_000.ogg" id="3_lyqam"]
+[ext_resource type="AudioStream" uid="uid://dadxlvvy3px5u" path="res://Assets/Sounds/footstep_grass_001.ogg" id="4_3a4ix"]
+[ext_resource type="AudioStream" uid="uid://6t7e63v8nw51" path="res://Assets/Sounds/footstep_grass_002.ogg" id="5_03x4o"]
+[ext_resource type="AudioStream" uid="uid://cdemcur2rfndh" path="res://Assets/Sounds/footstep_grass_003.ogg" id="6_kbgv4"]
+[ext_resource type="AudioStream" uid="uid://cscaq5xhqsdyw" path="res://Assets/Sounds/footstep_grass_004.ogg" id="7_lg8t8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7na75"]
 animations = [{
@@ -50,6 +56,23 @@ height = 40.0
 collision_layer = 0
 script = ExtResource("1_0wi6p")
 
+[node name="FootStepAudioPlayer" parent="." instance=ExtResource("2_c863a")]
+
+[node name="FootstepGrass000" type="AudioStreamPlayer" parent="FootStepAudioPlayer"]
+stream = ExtResource("3_lyqam")
+
+[node name="FootstepGrass001" type="AudioStreamPlayer" parent="FootStepAudioPlayer"]
+stream = ExtResource("4_3a4ix")
+
+[node name="FootstepGrass002" type="AudioStreamPlayer" parent="FootStepAudioPlayer"]
+stream = ExtResource("5_03x4o")
+
+[node name="FootstepGrass003" type="AudioStreamPlayer" parent="FootStepAudioPlayer"]
+stream = ExtResource("6_kbgv4")
+
+[node name="FootstepGrass004" type="AudioStreamPlayer" parent="FootStepAudioPlayer"]
+stream = ExtResource("7_lg8t8")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_7na75")
 animation = &"run"
@@ -84,4 +107,5 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_fppoc")
 disabled = true
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="TrapArea" to="." method="_on_trap_area_area_entered"]

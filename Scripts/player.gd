@@ -21,6 +21,7 @@ var camera: PlayerCamera = null
 
 @onready var anim = $AnimatedSprite2D
 @onready var dash_area = $DashArea/CollisionShape2D
+@onready var foot_step_audio = $FootStepAudioPlayer
 
 func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera")
@@ -118,3 +119,8 @@ func _on_trap_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Danger"):
 		died.emit()
 		camera.is_player = false
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "run":
+		foot_step_audio.play()

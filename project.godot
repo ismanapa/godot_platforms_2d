@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Plataformas 2D"
-run/main_scene="res://Scenes/level_01.tscn"
+run/main_scene="res://Scenes/Levels/Level_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*res://Scenes/music.tscn"
+LevelManager="*res://Scenes/LevelManager.tscn"
+EventBus="*res://Scenes/EventBus.tscn"
 
 [display]
 
