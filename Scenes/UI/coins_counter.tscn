@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwtvhi8hd6htk"]
+
+[ext_resource type="Script" path="res://Scripts/coins_counter.gd" id="1_bes2a"]
+[ext_resource type="Theme" uid="uid://djhtd3ytfocq" path="res://Resources/UITheme.tres" id="1_ieiut"]
+[ext_resource type="Texture2D" uid="uid://ya73hjwfp463" path="res://Assets/Items/Coins/tile_0151.png" id="2_45hdn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52q6w"]
+font_size = 28
+
+[node name="CoinsCounter" type="CanvasLayer"]
+script = ExtResource("1_bes2a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme = ExtResource("1_ieiut")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+label_settings = SubResource("LabelSettings_52q6w")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_45hdn")
