@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c7t6e50rwf4tq" path="res://Scenes/void.tscn" id="10_hpvcs"]
 [ext_resource type="PackedScene" uid="uid://bwtvhi8hd6htk" path="res://Scenes/UI/coins_counter.tscn" id="11_b0rkv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u844"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4y4u3"]
 texture = ExtResource("2_fv2rx")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -242,7 +242,7 @@ texture_region_size = Vector2i(18, 18)
 [sub_resource type="TileSet" id="TileSet_a36dk"]
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_2u844")
+sources/0 = SubResource("TileSetAtlasSource_4y4u3")
 
 [node name="Level01" type="Node" node_paths=PackedStringArray("player")]
 script = ExtResource("1_uya3e")
