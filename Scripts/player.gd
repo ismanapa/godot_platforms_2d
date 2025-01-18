@@ -16,6 +16,8 @@ var horizontal_acceleration: int = 1200
 var max_dash_speed : int = 400
 var min_dash_speed : int = 100
 var is_state_new : bool = true
+
+var jump_count: int = 0
 var is_jumping : bool = false
 
 var camera: PlayerCamera = null
@@ -67,12 +69,12 @@ func change_state(new_state: State):
 func player_movement(delta:float): 
 	var input_action = get_input_actions()
 	
-	if input_action.y >= 0 and is_jumping and is_on_floor():
-		is_jumping = false
+	if is_on_floor():
+		jump_count = 0
 	
-	if input_action.y < 0 and is_on_floor() and !is_jumping:
-		is_jumping = true
-		velocity.y = input_action.y * max_jump_speed
+	if has_to_jump() and jump_count < 2:
+		jump_count += 1
+		velocity.y = -max_jump_speed
 	
 	#velocity.x = move_vector.x * max_speed
 	velocity.x += input_action.x * horizontal_acceleration * delta;
@@ -100,6 +102,9 @@ func get_input_actions():
 	move_vector.y = Input.get_action_strength("jump") * -1
 	
 	return move_vector
+	
+func has_to_jump():
+	return Input.is_action_just_pressed("jump")
 
 func player_animations(): 
 	var movement = get_input_actions()
