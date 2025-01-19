@@ -8,8 +8,8 @@ The game has only two little leves which loop until you close the game. When you
 
 ## TODO
 
-- [] Add pause menu
-- [] Add more sounds
+- [ ] Add pause menu
+- [ ] Add more sounds
 
 ## Screenshots
 
