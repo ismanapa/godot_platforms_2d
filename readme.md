@@ -4,7 +4,7 @@ Game developed as part of the [Curso Intensivo Creación de Videojuegos con Godo
 
 This is the first game developed in the course.
 
-The game has only two little leves which loop until you close the game. When you finish the first level you go to the second one, and when you finish the seconds one you start again.
+The game has only two little leves which loop until you close the game. When you finish the first level you go to the second one, and when you finish the second one you start again.
 
 ## TODO
 
